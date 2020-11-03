@@ -35,4 +35,4 @@ public void Update() {
 
 # Reference
 
-https://science.sciencemag.org/content/317/5844/1518
+- Schaeffer, Jonathan & Björnsson, Yngvi & Kishimoto, Akihiro & Müller, Martin & Lake, Robert & Lu, Paul & Sutphen, Steve. (2007). Checkers Is Solved. Science. 317. 1518-1522. 10.1126/science.1144079. https://science.sciencemag.org/content/317/5844/1518
