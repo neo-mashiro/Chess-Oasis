@@ -33,6 +33,9 @@ public void Update() {
 }
 ```
 
+- En passant and Castling are ignored for simplicity
+- Checkmate is not auto detected
+
 
 
 
