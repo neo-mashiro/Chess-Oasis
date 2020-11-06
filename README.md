@@ -18,6 +18,54 @@ GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, "Your message");
 ...
 ```
 
+## API
+
+Ranks and files are numbered from 1 to 8, you can access a cell on board either by a `rank, file` pair or a string such as `4B`. To see the basic rules of chess, check [Wikipedia](https://en.wikipedia.org/wiki/Rules_of_chess).
+
+**Note**: for simplicity, _En passant_ and _Castling_ movements are not available. Besides, _checkmate_ is not auto detected as in most 2D chess games, since the UI side may want to give players more freedom or need to play a death animation before the game ends.
+
+```c#
+ChessBoard board = new ChessBoard();
+
+bool result = board.GameOver;  // check if game is over
+int count = board.TotalMoves;  // total number of moves
+
+// index by rank, file
+var cell = board[7, 6];
+var cell = board[9, 1];  // IndexOutOfRangeException
+
+// index by string
+var cell = board["1D"];
+var cell = board["0X"];  // IndexOutOfRangeException
+
+// enumerator
+foreach (var piece in board) {
+    if (piece != null) {
+        // you should not need to access the properties of a piece (but you can)
+        Console.Writeline(p);
+    }
+}
+
+// retrieve all legal moves a cell can make
+List<string> moves = board.GetLegalMoves("5F");
+
+// retrieve the next move made by AI
+(int rank, int file) move = board.MinimaxAI();
+
+// make a move (you should first check if it's legal)
+board.Move("2C", "4C");
+board.Move("3E", "4B");  // if "3E" is empty, do nothing
+board.Move("1H", "3X");  // IndexOutOfRangeException
+
+// the white or black player decides to surrender
+board.Resign("White");
+
+// reset the chessboard to initial state
+board.Reset();
+```
+
+## Example in Unity
+
 Here is an example of how to use the library in Unity3D's Monobehavior script:
 
 ```c#
@@ -33,12 +81,6 @@ public void Update() {
 }
 ```
 
-- En passant and Castling are ignored for simplicity
-- Checkmate is not auto detected
-
-
-
-
-# Reference
+## Reference
 
 - Schaeffer, Jonathan & Björnsson, Yngvi & Kishimoto, Akihiro & Müller, Martin & Lake, Robert & Lu, Paul & Sutphen, Steve. (2007). Checkers Is Solved. Science. 317. 1518-1522. 10.1126/science.1144079. https://science.sciencemag.org/content/317/5844/1518
