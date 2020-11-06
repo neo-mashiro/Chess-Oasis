@@ -62,6 +62,13 @@ board.Resign("White");
 
 // reset the chessboard to initial state
 board.Reset();
+
+// convert between a (rank, file) pair and its string position
+string cell = Map.ToStrPosition(6, 8);
+string cell = Map.ToStrPosition(9, 1);  // IndexOutOfRangeException
+
+(int rank, int file) cell = Map.ToIntPosition("6H");
+(int rank, int file) cell = Map.ToIntPosition("0A");  // IndexOutOfRangeException
 ```
 
 ## Example in Unity
