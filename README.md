@@ -76,7 +76,7 @@ string cell = Map.ToStrPosition(9, 1);  // IndexOutOfRangeException
 
 Here is an example (not tested) of how to use the library in Unity3D's Monobehavior script.
 
-![board](chess/ChessBoard.png)
+![board](Chess/ChessBoard.png)
 
 Assume that you have a 3D chessboard consists of 64 cube cells, each has a volumetric light child object set to inactive on game start. Aside from the board, each player is in control of 16 piece objects. On each frame, once the player left clicks on a cell, all cells that he can legally move to are spotlighted, the player then simply right click on a reachable cell to make a move, followed by the Minimax AI to automatically make another move, and so forth...
 
